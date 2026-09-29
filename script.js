@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------
-   Eleanor & Thomas — wedding site
+   Danielle & Jordan — wedding site
    Demo build: the RSVP is fully validated client-side and stores
    replies in this browser. In the live build the same submit handler
    posts to the backend (see README) which writes to the guest-list
@@ -33,7 +33,7 @@
   });
 
   /* ---------- countdown ---------- */
-  var target = new Date('2027-06-12T14:00:00').getTime();
+  var target = new Date('2027-02-12T17:00:00+11:00').getTime();
   var cdEls = {
     days: document.querySelector('[data-cd="days"]'),
     hours: document.querySelector('[data-cd="hours"]'),
@@ -178,9 +178,9 @@
     confirmTitle.textContent = coming ? 'Wonderful — see you there' : 'Thank you for letting us know';
     confirmBody.textContent = coming
       ? 'Your reply is in, ' + data.firstName + '. We\'ve got you down for ' +
-        (Number(data.guests) > 1 ? data.guests + ' places' : 'one place') +
+        (Number(data.guests) > 1 ? 'two places' : 'one place') +
         '. A confirmation is on its way to ' + data.email +
-        ', and we\'ll send the final details a week before the day.'
+        ', and we\'ll send the final details closer to the date.'
       : 'We\'re sorry you can\'t make it, ' + data.firstName +
         ', but thank you for replying — it really does help with the planning. We\'ll raise a glass to you.';
 

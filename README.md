@@ -1,30 +1,55 @@
-# Elegant Wedding Website — demo
+# Danielle & Jordan — wedding website
 
-A classic, elegant wedding website built as a working sample. Every name, date,
-place and paragraph on the page is invented placeholder content — it exists to
-show the design and the functionality, not to describe a real wedding.
+A coastal, Great Ocean Road take on a classic wedding site, built for a wedding
+in Anglesea, Victoria on Friday 12 February 2027.
+
+The content comes from the couple's own Canva site. Two deliberate omissions:
+
+- **Their phone numbers are not in this repository.** They appear on the
+  couple's own site, but this repo is public and indexable, so the contact FAQ
+  says "the numbers go here on the live site" until they confirm otherwise.
+- **Their photographs are not in this repository** either. The photo frames are
+  placeholders.
+
+The RSVP-by date is a placeholder: the couple's stated deadline of 30 August
+2026 had already passed, so it needs a new one from them.
+
+## Palette
+
+Bleached sand, limestone and deep sea, replacing the earlier ivory-and-gold.
+All six colours are CSS variables at the top of `styles.css`; the coastline
+illustration recolours with them automatically.
+
+The Great Ocean Road coastline under the hero is hand-drawn inline SVG —
+headland, sea, four limestone stacks, breaking foam, wet and dry sand, and
+gulls that drift. No photograph, no licensing, no download.
 
 ## What's in it
 
 | Section | What it does |
 |---|---|
-| Hero | Names, date, place, live countdown, RSVP call to action |
-| Private-ceremony band | A dark full-width band stating plainly that the ceremony is private and the celebration is for everyone |
-| Our Story | Three-chapter "about us" timeline, alternating text and portrait frames |
-| The Day | Four schedule cards; the ceremony card is visually set apart and tagged "Not a guest event" |
-| Details | Venue, accommodation, dress code, travel |
+| Hero | Names, date, place, live countdown, RSVP call to action, coastline illustration |
+| Private-ceremony band | A dark full-width band stating plainly that the ceremony is private and the reception is for everyone |
+| Our Wedding | Why Anglesea, in the couple's own words, with a photo frame |
+| Schedule | Four cards; the 11am ceremony card is set apart and tagged "Not a guest event" |
+| Details | Venue, dress code, where to stay, getting home |
 | Our Song | Inline player with a turning record, seek bar and times, plus a floating control that follows the guest down the page |
 | RSVP | Full form with validation, conditional fields, and a confirmation state |
-| Gift List | Honeymoon fund, registry, charity donation |
-| FAQ | Six expandable questions, the first answering "can we come to the ceremony?" |
+| Gifts | Wishing well at the venue, and their 2027 overseas trip |
+| FAQs | Nine expandable questions, the first answering "can we come to the ceremony?" |
 
 ## How the RSVP behaves
 
 - Required: first name, last name, a valid email, and an accept/decline choice.
-- Choosing **Joyfully accepts** reveals party size, guest names, menu choice,
-  coach booking, dietary requirements and a song request. Declining hides all of
-  it — nobody who isn't coming is asked what they want for dinner.
+- Choosing **Joyfully accepts** reveals party size, guest name, the Torquay bus
+  question, dietary requirements and a song request. Declining hides all of it —
+  nobody who isn't coming is asked whether they want the bus.
 - Guest names become required only when the party size is more than one.
+- The bus question exists because the couple are deciding whether to run a bus
+  back to Torquay based on numbers. Asking it here answers that for them
+  automatically instead of by group chat.
+- Party size caps at two, and the form says plainly that a +1 only applies if
+  the invitation included one.
 - Errors appear inline under the offending field and clear as soon as the guest
   starts correcting them. The page scrolls to the first problem.
 - On success the form is replaced by a confirmation that differs for accepts and

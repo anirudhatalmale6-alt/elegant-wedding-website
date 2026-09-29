@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eleanor &amp; Thomas · 12 June 2027</title>
-<meta name="description" content="Eleanor and Thomas are getting married. A private ceremony, followed by a celebration with everyone we love. RSVP, details and gift list.">
+<title>Danielle &amp; Jordan · Anglesea · 12 February 2027</title>
+<meta name="description" content="Danielle and Jordan are getting married in Anglesea. A private ceremony, then a celebration with all of you at The Love House.">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='Georgia,serif' fill='%23A8874E'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26' font-family='Georgia,serif' fill='%232E7180'%3ED%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
-<div class="demo-bar">Demo · placeholder names, dates and wording — everything on this page is yours to change</div>
+<div class="demo-bar">Draft · built from your Canva site — wording, dates and photos all still yours to change</div>
 
 <!-- ============================ NAV ============================ -->
 <header class="nav" id="nav">
   <div class="wrap nav__inner">
-    <a class="nav__monogram" href="#top">E &amp; T</a>
+    <a class="nav__monogram" href="#top">D &amp; J</a>
     <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <ul class="nav__links" id="navLinks">
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#song">Our Song</a></li>
-      <li><a href="#day">The Day</a></li>
+      <li><a href="#wedding">Our Wedding</a></li>
+      <li><a href="#schedule">Schedule</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#song">Our Song</a></li>
       <li><a href="#rsvp">RSVP</a></li>
-      <li><a href="#gifts">Gift List</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#gifts">Gifts</a></li>
+      <li><a href="#faq">FAQs</a></li>
     </ul>
   </div>
 </header>
 
 <!-- ============================ HERO =========================== -->
 <section class="hero" id="top">
-  <div class="wrap">
+  <div class="wrap hero__inner">
     <div class="hero__frame">
       <p class="hero__kicker">Together with their families</p>
 
       <h1 class="hero__names">
-        Eleanor
+        Danielle
         <span class="hero__amp">&amp;</span>
-        Thomas
+        Jordan
       </h1>
 
       <p class="hero__meta">
-        <span>Saturday 12 June 2027</span><i>·</i><span>Hampshire, England</span>
+        <span>Friday 12 February 2027</span><i>·</i><span>Anglesea, Victoria</span>
       </p>
 
       <p class="hero__note">
-        We are marrying quietly, just the two of us and our witnesses —
-        and then celebrating properly, with all of you.
+        A private ceremony in the morning — and then the whole evening
+        with all of you, at The Love House.
       </p>
 
       <div class="countdown" id="countdown" aria-label="Countdown to the celebration">
@@ -61,6 +61,59 @@
       <p class="hero__cta"><a class="btn btn--solid" href="#rsvp">RSVP</a></p>
     </div>
   </div>
+
+  <!-- The Great Ocean Road, drawn rather than photographed -->
+  <svg class="coast" viewBox="0 0 1200 240" preserveAspectRatio="xMidYMax slice"
+       role="img" aria-label="Illustration of the Great Ocean Road coastline">
+
+    <!-- far headland -->
+    <path fill="var(--sea-far)" opacity=".75"
+          d="M0 128 L0 96 C 48 84 96 86 140 98 C 196 114 244 126 300 130 L 360 132 L 0 132 Z"/>
+
+    <!-- sea -->
+    <rect x="0" y="128" width="1200" height="62" fill="var(--sea)" opacity=".92"/>
+
+    <!-- limestone stacks standing in the water -->
+    <g fill="var(--stack)">
+      <path d="M774 191 L780 102 C781 94 789 89 800 89 C812 89 820 95 821 103 L828 191 Z"/>
+      <path d="M848 191 L853 126 C854 119 860 115 868 115 C877 115 882 120 883 127 L889 191 Z"/>
+      <path d="M908 191 L912 150 C913 145 918 142 924 142 C931 142 935 145 936 151 L940 191 Z"/>
+      <path d="M962 191 L965 166 C966 162 970 160 974 160 C979 160 981 163 982 167 L985 191 Z"/>
+    </g>
+    <!-- the shaded side of each stack, away from the light -->
+    <g fill="var(--stack-dark)" opacity=".45">
+      <path d="M806 90 C815 91 820 96 821 103 L828 191 L812 191 Z"/>
+      <path d="M872 116 C879 117 882 121 883 127 L889 191 L878 191 Z"/>
+      <path d="M927 143 C932 144 935 147 936 151 L940 191 L932 191 Z"/>
+    </g>
+
+    <!-- swell lines -->
+    <g stroke="var(--beach)" stroke-width="2" stroke-linecap="round" opacity=".5" fill="none">
+      <path d="M90 150h48M170 158h34M300 148h40M420 160h30M520 150h44M660 156h36M1010 150h42M1100 160h30"/>
+    </g>
+
+    <!-- breaking foam -->
+    <path class="coast__foam" fill="#FDFBF7" opacity=".9"
+          d="M0 184 C 110 176 190 192 300 186 C 420 179 520 194 640 187
+             C 760 180 860 194 980 187 C 1080 181 1150 190 1200 185
+             L 1200 200 L 0 200 Z"/>
+
+    <!-- wet sand, then dry sand -->
+    <path fill="var(--beach)"
+          d="M0 196 C 140 190 260 204 400 198 C 560 191 700 205 860 198
+             C 1000 192 1110 202 1200 197 L 1200 240 L 0 240 Z"/>
+    <path fill="var(--ivory-warm)" opacity=".85"
+          d="M0 216 C 180 210 320 222 500 216 C 700 209 880 221 1060 215
+             C 1120 213 1170 216 1200 214 L 1200 240 L 0 240 Z"/>
+
+    <!-- gulls -->
+    <g class="coast__gulls" stroke="var(--ink-soft)" stroke-width="1.6"
+       fill="none" stroke-linecap="round" opacity=".5">
+      <path d="M980 54 q7 -6 13 0 q6 -6 13 0"/>
+      <path d="M1046 78 q5 -4 9 0 q4 -4 9 0"/>
+      <path d="M1008 96 q4 -3 7 0 q3 -3 7 0"/>
+    </g>
+  </svg>
 </section>
 
 <!-- ================== PRIVATE CEREMONY BAND ==================== -->
@@ -69,43 +122,43 @@
     <p class="eyebrow">Please note</p>
     <h2>A private ceremony — and a celebration for everyone</h2>
     <p>
-      We have chosen to say our vows privately, in a small ceremony with only our two witnesses
-      present. It is not a guest list we have agonised over — there simply isn't one. What we
-      genuinely care about is the part that comes afterwards: the drinks, the dinner, the dancing,
-      and seeing every one of you there. Your invitation is to the celebration, and it means the
-      world to us that you'll come.
+      We'll be having a private ceremony earlier in the day, just the two of us.
+      There's no guest list for it and nobody is being left off one. We can't
+      wait to share the memories, and then celebrate into the evening with all
+      of you at our reception. Your invitation is to the reception from 5:00pm,
+      and that's the part we really care about.
     </p>
   </div>
 </section>
 
-<!-- =========================== STORY =========================== -->
-<section class="section" id="story">
+<!-- ========================= OUR WEDDING ======================= -->
+<section class="section" id="wedding">
   <div class="wrap">
     <div class="section__head reveal">
       <p class="eyebrow">About us</p>
-      <h2>Our Story</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
+      <h2>Our Wedding</h2>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
-      <p>Twelve years, three cities, one very badly behaved dog.</p>
+      <p>Anglesea, where we both grew up.</p>
     </div>
 
     <div class="story">
 
       <article class="chapter reveal">
         <div class="chapter__text">
-          <p class="chapter__date">Autumn 2015 · How we met</p>
-          <h3>A queue for terrible coffee</h3>
+          <p class="chapter__date">Anglesea · Great Ocean Road</p>
+          <h3>Where it had to be</h3>
           <p>
-            We met in the worst café in Bristol, both queuing for a coffee neither of us
-            enjoyed. Thomas claims he started the conversation. Eleanor has a witness who says
-            otherwise. Twelve years later we still argue about it, usually over better coffee.
+            We're getting married in Anglesea, a place where we spent so much
+            time growing up and one that has always meant so much to us. It
+            feels like the perfect place to start this next chapter together.
           </p>
           <p>
-            One rainy Tuesday became a Sunday walk, which became a standing arrangement, which
-            became everything.
+            We'll be having a private ceremony before celebrating with all of
+            you at The Love House. We can't wait to eat, drink, dance, and kick
+            off married life with our favourite people.
           </p>
         </div>
         <div class="photo">
@@ -114,55 +167,144 @@
             <circle cx="24" cy="25" r="8" stroke="currentColor" stroke-width="1.2"/>
             <path d="M14 10l3-4h14l3 4" stroke="currentColor" stroke-width="1.2"/>
           </svg>
-          <span>Your photo here</span>
+          <span>One of your photos here</span>
         </div>
       </article>
 
-      <article class="chapter reveal">
-        <div class="chapter__text">
-          <p class="chapter__date">Summer 2019 · Making it home</p>
-          <h3>A small flat and a large dog</h3>
-          <p>
-            We moved in together above a bakery — wonderful for six months, unbearable for the
-            following two years. Then came Biscuit, who is a lurcher, entirely untrainable, and
-            the reason we finally found a house with a garden.
-          </p>
-          <p>
-            He will not be at the celebration. He has been told. He is not taking it well.
-          </p>
-        </div>
-        <div class="photo">
-          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M6 26 24 10l18 16" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M10 24v14h28V24" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M20 38V28h8v10" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span>Your photo here</span>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= THE SCHEDULE ====================== -->
+<section class="section section--tint" id="schedule">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Friday 12 February 2027</p>
+      <h2>Schedule of Events</h2>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <p>Everything from 5:00pm is yours.</p>
+    </div>
+
+    <div class="schedule reveal">
+
+      <article class="card card--muted">
+        <div class="card__time">11:00<small>am</small></div>
+        <h3>Private Ceremony</h3>
+        <p>
+          Just the two of us, earlier in the day. We'll be with you by
+          the evening with all the photos.
+        </p>
+        <span class="card__tag">Not a guest event</span>
       </article>
 
-      <article class="chapter reveal">
-        <div class="chapter__text">
-          <p class="chapter__date">New Year's Eve 2025 · The proposal</p>
-          <h3>Eight minutes before midnight</h3>
-          <p>
-            On a cold beach in Northumberland, with a thermos of something warm and a speech
-            that was abandoned halfway through, Thomas asked. Eleanor said yes before he had
-            quite finished, which he maintains is cheating.
-          </p>
-          <p>
-            We spent the whole of January telling people, and the whole of February deciding
-            that the wedding we actually wanted was a very quiet one — followed by a very loud party.
-          </p>
-        </div>
-        <div class="photo">
-          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <path d="M24 14c-5 3-8 5-8 8s3 5 8 8c5-3 8-5 8-8s-3-5-8-8Z" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M18 14h12l-6-6-6 6Z" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span>Your photo here</span>
-        </div>
+      <article class="card">
+        <div class="card__time">5:00<small>pm</small></div>
+        <h3>Reception Opens</h3>
+        <p>
+          Light bites, refreshing drinks and golden hour mingling at The Love
+          House, while we take photos with family and friends.
+        </p>
+        <span class="card__tag">Please arrive by 5</span>
       </article>
+
+      <article class="card">
+        <div class="card__time">6:30<small>pm</small></div>
+        <h3>Cocktail Hour</h3>
+        <p>
+          Our favourite cocktails, and the best of the view before the
+          sun goes down.
+        </p>
+        <span class="card__tag">All guests welcome</span>
+      </article>
+
+      <article class="card">
+        <div class="card__time">7:00<small>pm</small></div>
+        <h3>Dancing &amp; Open Bar</h3>
+        <p>
+          Music, drinks (we serve non-alcoholic too) and a little dancing
+          under the stars.
+        </p>
+        <span class="card__tag">All guests welcome</span>
+      </article>
+
+    </div>
+
+    <p class="schedule__note reveal">
+      We ask all guests to arrive by <strong>5:00pm</strong> so we can get the
+      formalities out of the way nice and early — then we can get straight into
+      the fun part of the night and celebrate together.
+    </p>
+  </div>
+</section>
+
+<!-- ========================== DETAILS ========================== -->
+<section class="section" id="details">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Important details about the day</p>
+      <h2>The Finer Details</h2>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="details reveal">
+
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 42s14-12 14-22a14 14 0 1 0-28 0c0 10 14 22 14 22Z" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="24" cy="20" r="5" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        <h3>The Venue</h3>
+        <p>
+          The Love House, Anglesea. Doors from 5:00pm — the reception is
+          where we'll see everybody.
+        </p>
+      </div>
+
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M8 34q8-7 16 0t16 0" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M8 40q8-7 16 0t16 0" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="34" cy="14" r="6" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M34 4v3M34 21v3M44 14h3M21 14h3M41 7l2-2M41 21l2 2" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        <h3>Dress Code</h3>
+        <p>
+          Semi-formal, and summer by the coast. Something you can relax and
+          celebrate in — nothing over the top.
+        </p>
+      </div>
+
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M12 42V18l12-8 12 8v24" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M8 42h32M20 42V30h8v12" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        <h3>Where to Stay</h3>
+        <p>
+          Book early — Anglesea is busy in summer. Torquay and Aireys Inlet
+          are both close and have good options.
+        </p>
+      </div>
+
+      <div>
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="8" y="12" width="32" height="22" rx="4" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M8 24h32" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="16" cy="38" r="3" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="32" cy="38" r="3" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+        <h3>Getting Home</h3>
+        <p>
+          Ubers are hard to get in Anglesea. We're hoping to run a bus back to
+          Torquay — tell us on the RSVP and we'll make it happen.
+        </p>
+      </div>
 
     </div>
   </div>
@@ -173,15 +315,14 @@
   <div class="wrap narrow">
     <div class="player reveal">
 
-      <!-- record sleeve; spins while the song is playing -->
       <div class="player__disc" aria-hidden="true">
         <span class="player__label"></span>
       </div>
 
       <div class="player__body">
         <p class="eyebrow">Our song</p>
-        <h2 class="player__title">Something Like Always</h2>
-        <p class="player__artist">The one we always come back to</p>
+        <h2 class="player__title">Yours, when you send it</h2>
+        <p class="player__artist">Placeholder — a piece I wrote for this draft</p>
 
         <div class="player__controls">
           <button type="button" class="player__play" id="songPlay"
@@ -214,145 +355,17 @@
   </div>
 </section>
 
-<!-- ========================== THE DAY ========================== -->
-<section class="section section--tint" id="day">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">Saturday 12 June 2027</p>
-      <h2>The Day</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
-      </svg>
-      <p>Everything below is the celebration, and everything below is for you.</p>
-    </div>
-
-    <div class="schedule reveal">
-
-      <article class="card card--muted">
-        <div class="card__time">11:00</div>
-        <h3>Ceremony</h3>
-        <p>
-          A private ceremony at Winchester Register Office, with our two witnesses.
-          No guests — we'll be with you by lunchtime.
-        </p>
-        <span class="card__tag">Not a guest event</span>
-      </article>
-
-      <article class="card">
-        <div class="card__time">14:00</div>
-        <h3>Drinks Reception</h3>
-        <p>
-          Arrive at Hartley Manor from two o'clock. Fizz, canapés and a lawn we're
-          told is very good for photographs.
-        </p>
-        <span class="card__tag">All guests welcome</span>
-      </article>
-
-      <article class="card">
-        <div class="card__time">16:00</div>
-        <h3>Wedding Breakfast</h3>
-        <p>
-          Seated dinner in the Orangery. Speeches somewhere between the main and the
-          pudding, depending on nerves.
-        </p>
-        <span class="card__tag">All guests welcome</span>
-      </article>
-
-      <article class="card">
-        <div class="card__time">19:30</div>
-        <h3>Dancing</h3>
-        <p>
-          The band starts at half past seven, the cake is cut at nine, and carriages
-          are at midnight.
-        </p>
-        <span class="card__tag">All guests welcome</span>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========================== DETAILS ========================== -->
-<section class="section" id="details">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow">Good to know</p>
-      <h2>Details</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
-      </svg>
-    </div>
-
-    <div class="details reveal">
-
-      <div>
-        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M24 42s14-12 14-22a14 14 0 1 0-28 0c0 10 14 22 14 22Z" stroke="currentColor" stroke-width="1.3"/>
-          <circle cx="24" cy="20" r="5" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <h3>The Venue</h3>
-        <p>
-          Hartley Manor, Old Alresford Road, Hampshire SO24 9DH.
-          Parking on site, and you're very welcome to leave a car overnight.
-        </p>
-      </div>
-
-      <div>
-        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M12 42V18l12-8 12 8v24" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M8 42h32M20 42V30h8v12" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <h3>Where to Stay</h3>
-        <p>
-          We've held rooms at The Swan in Alresford and at the Premier Inn in
-          Winchester. Quote “Eleanor &amp; Thomas” when booking.
-        </p>
-      </div>
-
-      <div>
-        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M16 12h16l4 10-12 22-12-22 4-10Z" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M12 22h24M20 12l-4 10 8 22M28 12l4 10-8 22" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <h3>Dress Code</h3>
-        <p>
-          Black tie optional — wear what makes you feel wonderful. The lawn is
-          grass, so consider your heels carefully.
-        </p>
-      </div>
-
-      <div>
-        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M24 14v10l7 4" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <h3>Getting There</h3>
-        <p>
-          Winchester station is 20 minutes away by taxi. We'll run a coach from
-          The Swan at 13:15 and back again at midnight.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- =========================== RSVP ============================ -->
 <section class="section section--tint" id="rsvp">
   <div class="wrap narrow">
     <div class="section__head reveal">
-      <p class="eyebrow">Kindly reply by 1 April 2027</p>
+      <p class="eyebrow">Kindly reply by 30 November 2026</p>
       <h2>RSVP</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
-      <p>One form per invitation, please — add your plus one further down.</p>
+      <p>One form per invitation, please.</p>
     </div>
 
     <div class="rsvp-shell reveal">
@@ -376,11 +389,11 @@
           <label for="email">Email address</label>
           <input type="email" id="email" name="email" autocomplete="email" required>
           <p class="field__error" id="email-error">Please enter a valid email address.</p>
-          <p class="field__hint">So we can send you the final details a week before.</p>
+          <p class="field__hint">So we can send the final details closer to the date.</p>
         </div>
 
         <fieldset class="fieldset">
-          <legend>Will you be joining the celebration?</legend>
+          <legend>Will you be joining us?</legend>
           <div class="choices">
             <label class="choice">
               <input type="radio" name="attending" value="yes" required>
@@ -394,47 +407,39 @@
           <p class="field__error" id="attending-error">Please let us know either way.</p>
         </fieldset>
 
-        <!-- Everything below only appears for guests who are coming -->
         <div id="attendingBlock" class="is-hidden">
 
           <div class="field">
-            <label for="guests">How many of you, including yourself?</label>
+            <label for="guests">How many of you?</label>
             <select id="guests" name="guests">
               <option value="1">Just me</option>
-              <option value="2">Two of us</option>
-              <option value="3">Three of us</option>
-              <option value="4">Four of us</option>
+              <option value="2">Two of us (if your invite includes a +1)</option>
             </select>
+            <p class="field__hint">
+              If a +1 is included in your invite we'll have told you — we're
+              keeping the night intimate, and we really appreciate you
+              understanding.
+            </p>
           </div>
 
-          <div class="field" id="guestNamesField">
-            <label for="guestNames">Names of your guests</label>
-            <input type="text" id="guestNames" name="guestNames" placeholder="e.g. Sarah Whitlock, Amelia Whitlock (age 6)">
-            <p class="field__error" id="guestNames-error">Please tell us who is coming with you.</p>
+          <div class="field is-hidden" id="guestNamesField">
+            <label for="guestNames">Your guest's name</label>
+            <input type="text" id="guestNames" name="guestNames" placeholder="Their full name">
+            <p class="field__error" id="guestNames-error">Please tell us who's coming with you.</p>
           </div>
 
-          <div class="grid-2">
-            <div class="field">
-              <label for="meal">Menu preference</label>
-              <select id="meal" name="meal">
-                <option value="">Please choose…</option>
-                <option>Beef</option>
-                <option>Sea bass</option>
-                <option>Vegetarian</option>
-                <option>Vegan</option>
-                <option>Children's menu</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="coach">Coach from The Swan?</label>
-              <select id="coach" name="coach">
-                <option value="">Please choose…</option>
-                <option>Yes, both ways</option>
-                <option>Yes, there only</option>
-                <option>Yes, back only</option>
-                <option>No thank you</option>
-              </select>
-            </div>
+          <div class="field">
+            <label for="bus">Would you use a bus back to Torquay?</label>
+            <select id="bus" name="bus">
+              <option value="">Please choose…</option>
+              <option>Yes, please — count me in</option>
+              <option>Maybe, depending on numbers</option>
+              <option>No thanks, I've sorted a lift</option>
+            </select>
+            <p class="field__hint">
+              Ubers are very hard to get in Anglesea. We're organising the bus
+              on numbers, so this genuinely helps.
+            </p>
           </div>
 
           <div class="field">
@@ -443,8 +448,8 @@
           </div>
 
           <div class="field">
-            <label for="song">One song that will get you dancing</label>
-            <input type="text" id="song" name="song" placeholder="Artist — Title">
+            <label for="songRequest">One song that will get you dancing</label>
+            <input type="text" id="songRequest" name="song" placeholder="Artist — Title">
           </div>
 
         </div>
@@ -460,7 +465,6 @@
 
       </form>
 
-      <!-- Shown after a successful submission -->
       <div class="confirm is-hidden" id="rsvpConfirm" role="status" aria-live="polite">
         <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
           <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2"/>
@@ -480,15 +484,14 @@
   <div class="wrap">
     <div class="section__head reveal">
       <p class="eyebrow">If you would like to</p>
-      <h2>Gift List</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
+      <h2>Wedding Gifts</h2>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
       <p>
-        Having you with us on the day is genuinely the whole point, and no gift is
-        expected. But we are asked often enough that it felt rude not to answer.
+        Your presence is truly the greatest gift, and we're just excited to
+        celebrate the night with you.
       </p>
     </div>
 
@@ -496,48 +499,35 @@
 
       <article class="gift">
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M6 20h36v20H6V20Z" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M4 14h40v6H4v-6ZM24 14v26" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M24 14s-8-1-9-5 6-4 9 5Zm0 0s8-1 9-5-6-4-9 5Z" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M6 22h36l-3 20H9L6 22Z" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M14 22c0-8 4-12 10-12s10 4 10 12" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M18 30h12" stroke="currentColor" stroke-width="1.3"/>
         </svg>
-        <h3>The Honeymoon</h3>
+        <h3>The Wishing Well</h3>
         <p>
-          We're going to Kyoto in the autumn. If you'd like to put something towards
-          a night, a meal or a very long train journey, this is where it goes.
+          There'll be a wishing well at The Love House on the night, if you'd
+          like to use it. No obligation at all.
         </p>
-        <a class="btn" href="#gifts" data-demo-link>Contribute</a>
       </article>
 
       <article class="gift">
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M10 18h28l-2 24H12L10 18Z" stroke="currentColor" stroke-width="1.3"/>
-          <path d="M18 18v-4a6 6 0 0 1 12 0v4" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M7 24h34M24 7c5 5 7 11 7 17s-2 12-7 17c-5-5-7-11-7-17s2-12 7-17Z"
+                stroke="currentColor" stroke-width="1.3"/>
         </svg>
-        <h3>The House List</h3>
+        <h3>Our 2027 Adventure</h3>
         <p>
-          A short, sensible list at John Lewis — mostly things to replace what we
-          bought as students and have been quietly ashamed of since.
+          We're planning an overseas trip in 2027. If you'd like to give a
+          gift, a contribution towards our travels would mean a lot.
         </p>
-        <a class="btn" href="#gifts" data-demo-link>View the list</a>
-      </article>
-
-      <article class="gift">
-        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <path d="M24 40S8 30 8 19a9 9 0 0 1 16-5.5A9 9 0 0 1 40 19c0 11-16 21-16 21Z" stroke="currentColor" stroke-width="1.3"/>
-        </svg>
-        <h3>A Donation</h3>
-        <p>
-          If you'd rather give it away than give it to us — and we'd love that —
-          we're collecting for Mind and for the Alresford Food Bank.
-        </p>
-        <a class="btn" href="#gifts" data-demo-link>Donate</a>
       </article>
 
     </div>
 
     <p class="gift__note">
-      Please don't feel any obligation. Turning up, putting on something smart and
-      staying until the band stops is the only thing we're actually asking for.
+      Genuinely — turning up, arriving by five and staying until the music
+      stops is the only thing we're actually asking for.
     </p>
   </div>
 </section>
@@ -548,10 +538,9 @@
     <div class="section__head reveal">
       <p class="eyebrow">Questions</p>
       <h2>Frequently Asked</h2>
-      <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-        <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-        <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-        <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
+      <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+        <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+              stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
       </svg>
     </div>
 
@@ -560,51 +549,86 @@
       <details open>
         <summary>Can we come to the ceremony?</summary>
         <p>
-          Honestly, no — and please don't read anything into it. The ceremony is the two of us
-          and two witnesses in a register office, and there is no room for guests at all. We
-          decided early on that we'd rather spend the day celebrating with everyone than
-          managing a ceremony. The celebration from 2pm is the real event, and you're invited
-          to all of it.
+          Our ceremony is a private one held earlier in the day — just the two
+          of us, no guests at all, so please don't read anything into it.
+          We can't wait to share the memories with you, and then celebrate into
+          the evening together. The reception from 5:00pm is the real event and
+          you're invited to every minute of it.
         </p>
       </details>
 
       <details>
         <summary>What time should I arrive?</summary>
         <p>
-          Any time from 2pm. If you're coming on the coach it leaves The Swan at 1:15pm sharp.
-          Dinner is served at 4pm, so please be seated by ten to.
+          Please be at The Love House by 5:00pm. That way we get the formalities
+          done nice and early and can get straight into the fun part of the night.
         </p>
       </details>
 
       <details>
-        <summary>Are children invited?</summary>
+        <summary>Can I bring a guest?</summary>
         <p>
-          Yes, very much so. There's a children's menu on the RSVP form, and a quiet room with
-          films and beanbags from 7pm for anyone who needs a break from the band.
+          If a +1 is included in your invite, we'll have been sure to let you
+          know. We're keeping our celebration intimate and really appreciate
+          your understanding with this.
         </p>
       </details>
 
       <details>
-        <summary>Is there parking?</summary>
+        <summary>Can I bring my kids?</summary>
         <p>
-          There is, and you're welcome to leave a car overnight and collect it before 11am the
-          next morning. Taxis in the area need booking in advance — we'd suggest doing it now.
+          We want to make sure you can truly relax and enjoy a night off
+          celebrating with us, so we kindly ask that you organise a sitter for
+          your children for the evening. Thank you so much for understanding.
         </p>
       </details>
 
       <details>
-        <summary>Can I bring a plus one?</summary>
+        <summary>Where can I stay?</summary>
         <p>
-          If your invitation named a guest, absolutely — just add their name on the RSVP form.
-          If it didn't, do get in touch and we'll see what we can do.
+          We recommend booking accommodation early, as Anglesea can get busy in
+          the summer months. There are plenty of beautiful places to stay in
+          Anglesea, with nearby towns like Torquay and Aireys Inlet also
+          offering great options.
         </p>
       </details>
 
       <details>
-        <summary>Who do I ask if something isn't answered here?</summary>
+        <summary>Does the venue have parking?</summary>
         <p>
-          Our maid of honour Sarah is fielding everything on 07700 900 812, and would much
-          rather you asked her than worried about it.
+          There is parking available at the venue, however spaces are limited.
+          If the main car park is full, there is street parking available within
+          a short walking distance of The Love House.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will there be any transport from the venue?</summary>
+        <p>
+          Pending RSVPs, we're hoping to organise a bus back to Torquay after
+          the event for guests wanting to enjoy a few beverages throughout the
+          night. As Ubers can be very difficult to get in Anglesea, please tell
+          us on the RSVP form whether you'd use it — we'll share more details
+          closer to the date once numbers are confirmed.
+        </p>
+      </details>
+
+      <details>
+        <summary>What exactly is the dress code?</summary>
+        <p>
+          Dress code is semi-formal. Boys, think a white shirt paired with
+          comfortable shorts or pants, and something you can relax and celebrate
+          in. Girls, think cute summer dress or something comfortable but still
+          a little dressed up. You know Dani's not big on a full cocktail
+          moment, so no need to go over the top — just something you feel great in.
+        </p>
+      </details>
+
+      <details>
+        <summary>Who do I ask about anything else?</summary>
+        <p>
+          Just message Danielle or Jordan directly — the numbers go here on the
+          live site.
         </p>
       </details>
 
@@ -615,18 +639,16 @@
 <!-- =========================== FOOTER ========================== -->
 <footer class="footer">
   <div class="wrap">
-    <p class="display">Eleanor &amp; Thomas</p>
-    <svg class="divider" viewBox="0 0 180 18" fill="none" aria-hidden="true">
-      <path d="M2 9h58M120 9h58" stroke="currentColor" stroke-width="1"/>
-      <path d="M90 2c-6 3-9 5-9 7s3 4 9 7c6-3 9-5 9-7s-3-4-9-7Z" stroke="currentColor" stroke-width="1"/>
-      <path d="M66 9h6M108 9h6" stroke="currentColor" stroke-width="1"/>
+    <p class="display">Danielle &amp; Jordan</p>
+    <svg class="divider divider--wave" viewBox="0 0 150 16" fill="none" aria-hidden="true">
+      <path d="M2 8q9-7 18 0t18 0 18 0 18 0 18 0 18 0 18 0"
+            stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
     </svg>
-    <p>12 · 06 · 2027 &nbsp;·&nbsp; Hampshire</p>
+    <p>12 · 02 · 2027 &nbsp;·&nbsp; Anglesea, Victoria</p>
   </div>
 </footer>
 
 <!-- ==================== MUSIC (never autoplays) ================= -->
-<!-- preload="none" so the file is only fetched if a guest asks for it -->
 <audio id="songAudio" loop preload="none">
   <source src="audio/our-song.ogg" type="audio/ogg">
   <source src="audio/our-song.mp3" type="audio/mpeg">
