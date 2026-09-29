@@ -3,11 +3,12 @@
 A coastal, Great Ocean Road take on a classic wedding site, built for a wedding
 in Anglesea, Victoria on Friday 12 February 2027.
 
-The content comes from the couple's own Canva site. Two deliberate omissions:
+The content comes from the couple's own Canva site, plus a round of wording
+changes from them. Two things worth flagging:
 
-- **Their phone numbers are not in this repository.** They appear on the
-  couple's own site, but this repo is public and indexable, so the contact FAQ
-  says "the numbers go here on the live site" until they confirm otherwise.
+- **Their phone numbers are deliberately absent**, at their request. The
+  contact FAQ says guests should already have their details. `test_site.py`
+  asserts the numbers never reappear.
 - **Their photographs are now included**, at their request — two supplied by
   the couple. `IMG_7037` arrived physically sideways because the EXIF
   orientation tag was stripped in transit, so it is rotated 90 degrees
@@ -15,6 +16,17 @@ The content comes from the couple's own Canva site. Two deliberate omissions:
 
 The RSVP-by date is a placeholder: the couple's stated deadline of 30 August
 2026 had already passed, so it needs a new one from them.
+
+## House style
+
+The couple asked for **no en or em dashes anywhere in the copy** — they felt the
+dashes read as AI-written. Commas or full stops instead. `test_site.py` walks
+every text node and fails if a dash comes back, so this cannot regress
+unnoticed.
+
+"The Love House" is wrapped in `.nowrap` everywhere it appears, because they
+asked for it never to break across two lines. The test asserts each of those
+elements occupies exactly one client rect.
 
 ## Palette
 
@@ -31,14 +43,14 @@ gulls that drift. No photograph, no licensing, no download.
 | Section | What it does |
 |---|---|
 | Hero | Names, date, place, live countdown, RSVP call to action, coastline illustration |
-| Private-ceremony band | A dark full-width band stating plainly that the ceremony is private and the reception is for everyone |
+| Ceremony band | A dark full-width band stating plainly that the ceremony is for them, the boys and immediate family, and that the reception is for everyone |
 | Our Wedding | Why Anglesea, in the couple's own words, with their beach photograph |
-| Photo band | Full-width pier photograph between Details and Our Song |
-| Schedule | Four cards; the 11am ceremony card is set apart and tagged "Not a guest event" |
+| Photo band | Full-width pier photograph between Details and Music |
+| Schedule | Five cards laid out 3 + 2 and centred; the 11am ceremony card is set apart and tagged "Not a guest event" |
 | Details | Venue, dress code, where to stay, getting home |
-| Our Song | Inline player with a turning record, seek bar and times, plus a floating control that follows the guest down the page |
+| Music | The Spotify embed of their track, and a separate background player with a turning record, seek bar and a floating control that follows the guest |
 | RSVP | Full form with validation, conditional fields, and a confirmation state |
-| Gifts | Wishing well at the venue, and their 2027 overseas trip |
+| Gifts | Wishing well at the venue, and what contributions go towards |
 | FAQs | Nine expandable questions, the first answering "can we come to the ceremony?" |
 
 ## How the RSVP behaves
@@ -48,11 +60,11 @@ gulls that drift. No photograph, no licensing, no download.
   question, dietary requirements and a song request. Declining hides all of it —
   nobody who isn't coming is asked whether they want the bus.
 - Guest names become required only when the party size is more than one.
-- The bus question exists because the couple are deciding whether to run a bus
-  back to Torquay based on numbers. Asking it here answers that for them
-  automatically instead of by group chat.
-- Party size caps at two, and the form says plainly that a +1 only applies if
-  the invitation included one.
+- The bus back to Torquay is confirmed, dropping at the Torquay Hotel. The RSVP
+  still asks who will use it so the couple can size it, which answers that for
+  them automatically instead of by group chat.
+- Party size caps at two, and the form states the couple's rule: if you are
+  married or engaged, your partner is invited.
 - Errors appear inline under the offending field and clear as soon as the guest
   starts correcting them. The page scrolls to the first problem.
 - On success the form is replaced by a confirmation that differs for accepts and
@@ -70,7 +82,7 @@ CSV export for the caterer, is the usual companion to that.
 Two separate things, deliberately kept apart:
 
 **Their song** — *Daylight (Piano Version)* by Relaxing Piano Covers — plays
-through a Spotify embed in the Our Song section. This is the only element on
+through a Spotify embed in the Music section. This is the only element on
 the site that reaches a third party: the embed loads Spotify's script and sets
 Spotify's cookies. Everything else is served from this site. Spotify plays the
 full track for signed-in listeners and a ~30 second preview for everyone else,
@@ -115,7 +127,7 @@ scripts and cookies.
 - Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`. There is no
   analytics and no tracking of our own, and **no guest data leaves the page** —
   the RSVP never touches a third party.
-- **One exception, and only one:** the Spotify embed in the Our Song section
+- **One exception, and only one:** the Spotify embed in the Music section
   loads Spotify's script and sets Spotify's cookies for anyone who scrolls to
   it. Removing that one `<iframe>` restores the property that the page makes no
   external requests whatsoever.

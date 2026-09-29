@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------
-   Danielle & Jordan — wedding site
+   Danielle & Jordan wedding site
    Demo build: the RSVP is fully validated client-side and stores
    replies in this browser. In the live build the same submit handler
    posts to the backend (see README) which writes to the guest-list
@@ -175,14 +175,14 @@
     }
 
     var coming = data.attending === 'yes';
-    confirmTitle.textContent = coming ? 'Wonderful — see you there' : 'Thank you for letting us know';
+    confirmTitle.textContent = coming ? 'Wonderful, see you there' : 'Thank you for letting us know';
     confirmBody.textContent = coming
       ? 'Your reply is in, ' + data.firstName + '. We\'ve got you down for ' +
         (Number(data.guests) > 1 ? 'two places' : 'one place') +
         '. A confirmation is on its way to ' + data.email +
         ', and we\'ll send the final details closer to the date.'
       : 'We\'re sorry you can\'t make it, ' + data.firstName +
-        ', but thank you for replying — it really does help with the planning. We\'ll raise a glass to you.';
+        ', but thank you for replying. It really does help with the planning, and we\'ll raise a glass to you.';
 
     form.classList.add('is-hidden');
     confirmPanel.classList.remove('is-hidden');
@@ -200,7 +200,7 @@
     document.getElementById('firstName').focus();
   });
 
-  /* ---------- our song ----------------------------------------
+  /* ---------- background music --------------------------------
      One <audio> driven by two controls (the inline player and the
      floating button) that always show the same state.
 
@@ -225,7 +225,7 @@
   audio.volume = 0;
 
   function clock(secs) {
-    if (!isFinite(secs) || secs < 0) return '—:—';
+    if (!isFinite(secs) || secs < 0) return '0:00';
     var m = Math.floor(secs / 60);
     var s = Math.floor(secs % 60);
     return m + ':' + (s < 10 ? '0' + s : s);
@@ -252,7 +252,7 @@
     songSection.classList.toggle('is-spinning', playing);
     [playBtn, jukeBtn].forEach(function (b) {
       b.setAttribute('aria-pressed', String(playing));
-      b.setAttribute('aria-label', playing ? 'Pause our song' : 'Play our song');
+      b.setAttribute('aria-label', playing ? 'Pause the music' : 'Play the music');
     });
   }
 
@@ -272,7 +272,7 @@
       if (p && p.catch) {
         p.catch(function () {
           /* the browser refused (rare, since this came from a click) */
-          noteEl.textContent = 'Your browser blocked playback — tap the button once more.';
+          noteEl.textContent = 'Your browser blocked playback. Tap the button once more.';
         });
       }
     } else {
@@ -385,14 +385,5 @@
   }
 
   paintSeek();
-
-  /* Gift links are placeholders in the demo */
-  document.querySelectorAll('[data-demo-link]').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.alert('Demo only — in the live site this opens your real registry, ' +
-                   'honeymoon fund or donation page.');
-    });
-  });
 
 })();

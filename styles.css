@@ -1222,3 +1222,29 @@ img { max-width: 100%; display: block; }
 .player__title { font-size: clamp(1.4rem, 3vw, 1.8rem); }
 
 .player__artist { font-size: 0.9rem; }
+
+/* ---------------------------------------------------------------
+   Small copy helpers
+   --------------------------------------------------------------- */
+
+/* the venue name must never break across two lines */
+.nowrap { white-space: nowrap; }
+
+/* Five schedule cards now, so let the row centre any remainder
+   rather than leaving a lone card stranded on the left. */
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* basis chosen so the row breaks 3 + 2 rather than a lopsided 4 + 1;
+   justify-content centres the remainder so it reads as intentional */
+.schedule .card {
+  flex: 1 1 280px;
+  max-width: 340px;
+}
+
+@media (max-width: 560px) {
+  .schedule .card { flex-basis: 100%; max-width: none; }
+}
