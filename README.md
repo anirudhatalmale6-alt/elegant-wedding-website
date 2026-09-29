@@ -8,8 +8,10 @@ The content comes from the couple's own Canva site. Two deliberate omissions:
 - **Their phone numbers are not in this repository.** They appear on the
   couple's own site, but this repo is public and indexable, so the contact FAQ
   says "the numbers go here on the live site" until they confirm otherwise.
-- **Their photographs are not in this repository** either. The photo frames are
-  placeholders.
+- **Their photographs are now included**, at their request — two supplied by
+  the couple. `IMG_7037` arrived physically sideways because the EXIF
+  orientation tag was stripped in transit, so it is rotated 90 degrees
+  clockwise here before use.
 
 The RSVP-by date is a placeholder: the couple's stated deadline of 30 August
 2026 had already passed, so it needs a new one from them.
@@ -30,7 +32,8 @@ gulls that drift. No photograph, no licensing, no download.
 |---|---|
 | Hero | Names, date, place, live countdown, RSVP call to action, coastline illustration |
 | Private-ceremony band | A dark full-width band stating plainly that the ceremony is private and the reception is for everyone |
-| Our Wedding | Why Anglesea, in the couple's own words, with a photo frame |
+| Our Wedding | Why Anglesea, in the couple's own words, with their beach photograph |
+| Photo band | Full-width pier photograph between Details and Our Song |
 | Schedule | Four cards; the 11am ceremony card is set apart and tagged "Not a guest event" |
 | Details | Venue, dress code, where to stay, getting home |
 | Our Song | Inline player with a turning record, seek bar and times, plus a floating control that follows the guest down the page |
@@ -64,9 +67,20 @@ CSV export for the caterer, is the usual companion to that.
 
 ## The music
 
-`audio/our-song.mp3` (and a smaller `.ogg` for browsers that prefer it) is an
-original piano piece written for this demo — nothing sampled, nothing licensed.
-It is a stand-in for the couple's real song.
+Two separate things, deliberately kept apart:
+
+**Their song** — *Daylight (Piano Version)* by Relaxing Piano Covers — plays
+through a Spotify embed in the Our Song section. This is the only element on
+the site that reaches a third party: the embed loads Spotify's script and sets
+Spotify's cookies. Everything else is served from this site. Spotify plays the
+full track for signed-in listeners and a ~30 second preview for everyone else,
+and it cannot autoplay or play in the background.
+
+**The background music** is `audio/our-song.mp3` (plus a smaller `.ogg`), an
+original piano piece written for this build — nothing sampled, nothing
+licensed. It is a placeholder until the couple supply an audio file they own;
+dropping that file in makes the background player play their actual song across
+the whole site, which the Spotify embed can never do.
 
 How it behaves:
 
@@ -127,7 +141,8 @@ styles.css    the whole design — colours are CSS variables at the top
 script.js     countdown, navigation, scroll reveals, RSVP logic, music player
 fonts.css     self-hosted @font-face declarations
 fonts/        woff2 files (latin subset)
-audio/        the song, as mp3 and ogg
+audio/        the background music, as mp3 and ogg
+img/          the couple's photographs, resized for the web
 ```
 
 To re-skin it, change the six colour variables at the top of `styles.css`.

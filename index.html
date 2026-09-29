@@ -161,14 +161,13 @@
             off married life with our favourite people.
           </p>
         </div>
-        <div class="photo">
-          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <rect x="4" y="10" width="40" height="30" rx="2" stroke="currentColor" stroke-width="1.2"/>
-            <circle cx="24" cy="25" r="8" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M14 10l3-4h14l3 4" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          <span>One of your photos here</span>
-        </div>
+        <figure class="photo photo--filled">
+          <img src="img/beach.jpg"
+               srcset="img/beach-small.jpg 560w, img/beach.jpg 920w"
+               sizes="(max-width: 760px) 90vw, 460px"
+               width="920" height="1228" loading="lazy" decoding="async"
+               alt="Danielle and Jordan on the beach at Anglesea, the pier behind them">
+        </figure>
       </article>
 
     </div>
@@ -310,9 +309,39 @@
   </div>
 </section>
 
+<!-- ======================= PHOTO INTERLUDE ===================== -->
+<figure class="photoband">
+  <img src="img/pier.jpg" width="1344" height="1007" loading="lazy" decoding="async"
+       alt="Danielle and Jordan on the Anglesea pier at golden hour">
+  <figcaption>Anglesea</figcaption>
+</figure>
+
 <!-- =========================== OUR SONG ======================== -->
 <section class="section section--song" id="song">
   <div class="wrap narrow">
+
+    <div class="section__head reveal">
+      <p class="eyebrow">Our song</p>
+      <h2>Daylight</h2>
+      <p class="song__artist">Piano Version &middot; Relaxing Piano Covers</p>
+    </div>
+
+    <!-- The real track, played by Spotify. Note this is the one thing on the
+         page that reaches a third party: the embed loads Spotify's script and
+         sets their cookies. Everything else here is served from this site. -->
+    <div class="spotify reveal">
+      <iframe title="Daylight (Piano Version) on Spotify"
+              src="https://open.spotify.com/embed/track/2AuGhOj6ATcSCE2Wgmc9dK?utm_source=generator&amp;theme=0"
+              width="100%" height="152" frameborder="0" loading="lazy"
+              allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <p class="spotify__note">
+        Spotify plays the full track for anyone signed in, and a short preview
+        for everyone else.
+      </p>
+    </div>
+
+    <!-- Separate, and deliberately so: the quiet background music, which is a
+         placeholder piece until the couple send an audio file. -->
     <div class="player reveal">
 
       <div class="player__disc" aria-hidden="true">
@@ -320,13 +349,13 @@
       </div>
 
       <div class="player__body">
-        <p class="eyebrow">Our song</p>
-        <h2 class="player__title">Yours, when you send it</h2>
-        <p class="player__artist">Placeholder — a piece I wrote for this draft</p>
+        <p class="eyebrow">Background music</p>
+        <h3 class="player__title">A placeholder, for now</h3>
+        <p class="player__artist">Swap this for Daylight and it plays right across the site</p>
 
         <div class="player__controls">
           <button type="button" class="player__play" id="songPlay"
-                  aria-pressed="false" aria-label="Play our song">
+                  aria-pressed="false" aria-label="Play the background music">
             <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/>
             </svg>
@@ -338,7 +367,7 @@
           <div class="player__track">
             <input type="range" id="songSeek" class="player__seek"
                    min="0" max="1000" value="0" step="1"
-                   aria-label="Seek within the song">
+                   aria-label="Seek within the background music">
             <div class="player__times">
               <span id="songNow">0:00</span>
               <span id="songTotal">—:—</span>
@@ -347,7 +376,7 @@
         </div>
 
         <p class="player__note" id="songNote">
-          It plays quietly, and it won't start on its own.
+          It plays quietly, follows you down the page, and won't start on its own.
         </p>
       </div>
 
