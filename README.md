@@ -89,10 +89,17 @@ full track for signed-in listeners and a ~30 second preview for everyone else,
 and it cannot autoplay or play in the background.
 
 **The background music** is `audio/our-song.mp3` (plus a smaller `.ogg`), an
-original piano piece written for this build — nothing sampled, nothing
-licensed. It is a placeholder until the couple supply an audio file they own;
-dropping that file in makes the background player play their actual song across
-the whole site, which the Spotify embed can never do.
+original piano piece written for this build: nothing sampled, nothing
+licensed, nothing to clear. It is a slow 4/4 ballad in G major, chosen to sit
+near the mood of the track they picked. `make_music2.py` generates it; the
+earlier 3/4 waltz is `make_music.py` if they prefer that one.
+
+The couple asked whether the track could be pulled from a YouTube link. It
+could not: the video is a third-party upload of commercial music, so taking the
+audio would breach both YouTube's terms and the rights in the recording. The
+Spotify embed is the legitimate way to have that exact track on the page, and
+original music is the legitimate way to have something playing in the
+background.
 
 How it behaves:
 
@@ -115,10 +122,11 @@ To swap in a different song, drop your file in `audio/` and update the two
 `<source>` elements plus the title and artist in `index.html`. Keep both an mp3
 and an ogg if you want the widest coverage; mp3 alone is fine in practice.
 
-Note on rights: hosting a commercial track on a public page technically needs a
-licence. An embed (Spotify/Apple Music/YouTube) avoids that but costs you the
-"no external requests" property described below, since it loads third-party
-scripts and cookies.
+Note on rights: hosting a commercial recording on a public page needs a licence,
+which is why the background music here is original. An embed
+(Spotify/Apple Music/YouTube) is the licensed route to a commercial track, but
+it costs you the "no external requests" property described below, since it loads
+third-party scripts and cookies.
 
 ## Technical notes
 
