@@ -14,8 +14,8 @@ changes from them. Two things worth flagging:
   orientation tag was stripped in transit, so it is rotated 90 degrees
   clockwise here before use.
 
-The RSVP-by date is a placeholder: the couple's stated deadline of 30 August
-2026 had already passed, so it needs a new one from them.
+The RSVP-by date is 30 November 2026, confirmed by the couple. Their Canva site
+said 30 August 2026, which had already passed when this was built.
 
 ## House style
 
