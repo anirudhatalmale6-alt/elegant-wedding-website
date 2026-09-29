@@ -20,6 +20,7 @@
     <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <ul class="nav__links" id="navLinks">
       <li><a href="#story">Our Story</a></li>
+      <li><a href="#song">Our Song</a></li>
       <li><a href="#day">The Day</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#rsvp">RSVP</a></li>
@@ -162,6 +163,52 @@
           <span>Your photo here</span>
         </div>
       </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================== OUR SONG ======================== -->
+<section class="section section--song" id="song">
+  <div class="wrap narrow">
+    <div class="player reveal">
+
+      <!-- record sleeve; spins while the song is playing -->
+      <div class="player__disc" aria-hidden="true">
+        <span class="player__label"></span>
+      </div>
+
+      <div class="player__body">
+        <p class="eyebrow">Our song</p>
+        <h2 class="player__title">Something Like Always</h2>
+        <p class="player__artist">The one we always come back to</p>
+
+        <div class="player__controls">
+          <button type="button" class="player__play" id="songPlay"
+                  aria-pressed="false" aria-label="Play our song">
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/>
+            </svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.5 5h3v14h-3zM12.5 5h3v14h-3z" fill="currentColor"/>
+            </svg>
+          </button>
+
+          <div class="player__track">
+            <input type="range" id="songSeek" class="player__seek"
+                   min="0" max="1000" value="0" step="1"
+                   aria-label="Seek within the song">
+            <div class="player__times">
+              <span id="songNow">0:00</span>
+              <span id="songTotal">—:—</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="player__note" id="songNote">
+          It plays quietly, and it won't start on its own.
+        </p>
+      </div>
 
     </div>
   </div>
@@ -577,6 +624,31 @@
     <p>12 · 06 · 2027 &nbsp;·&nbsp; Hampshire</p>
   </div>
 </footer>
+
+<!-- ==================== MUSIC (never autoplays) ================= -->
+<!-- preload="none" so the file is only fetched if a guest asks for it -->
+<audio id="songAudio" loop preload="none">
+  <source src="audio/our-song.ogg" type="audio/ogg">
+  <source src="audio/our-song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="jukebox" id="jukebox">
+  <p class="jukebox__hint" id="jukeboxHint">
+    Play our song
+    <button type="button" class="jukebox__dismiss" id="jukeboxDismiss"
+            aria-label="Hide this">&times;</button>
+  </p>
+
+  <button type="button" class="jukebox__btn" id="jukeboxBtn"
+          aria-pressed="false" aria-label="Play our song">
+    <svg class="jukebox__note" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M9 18V6l10-2v12" stroke="currentColor" stroke-width="1.4" fill="none"/>
+      <ellipse cx="6.5" cy="18" rx="2.5" ry="2" fill="currentColor"/>
+      <ellipse cx="16.5" cy="16" rx="2.5" ry="2" fill="currentColor"/>
+    </svg>
+    <span class="jukebox__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  </button>
+</div>
 
 <script src="script.js"></script>
 </body>

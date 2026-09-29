@@ -17,18 +17,18 @@
   onScroll();
 
   /* ---------- mobile menu ---------- */
-  var toggle = document.getElementById('navToggle');
+  var navToggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
 
-  toggle.addEventListener('click', function () {
+  navToggle.addEventListener('click', function () {
     var open = links.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-expanded', String(open));
   });
 
   links.addEventListener('click', function (e) {
     if (e.target.tagName === 'A') {
       links.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
   });
 
@@ -199,6 +199,192 @@
     form.classList.remove('is-hidden');
     document.getElementById('firstName').focus();
   });
+
+  /* ---------- our song ----------------------------------------
+     One <audio> driven by two controls (the inline player and the
+     floating button) that always show the same state.
+
+     It never autoplays. Browsers block sound-on-load anyway, but it is
+     also just rude, so playback only ever starts from a real click.
+     ------------------------------------------------------------- */
+  var audio = document.getElementById('songAudio');
+  var playBtn = document.getElementById('songPlay');
+  var jukeBtn = document.getElementById('jukeboxBtn');
+  var seek = document.getElementById('songSeek');
+  var nowEl = document.getElementById('songNow');
+  var totalEl = document.getElementById('songTotal');
+  var noteEl = document.getElementById('songNote');
+  var hint = document.getElementById('jukeboxHint');
+  var songSection = document.getElementById('song');
+
+  var VOLUME = 0.55;        /* background music should sit under the room */
+  var FADE_MS = 700;
+  var fadeTimer = null;
+  var seeking = false;
+
+  audio.volume = 0;
+
+  function clock(secs) {
+    if (!isFinite(secs) || secs < 0) return '—:—';
+    var m = Math.floor(secs / 60);
+    var s = Math.floor(secs % 60);
+    return m + ':' + (s < 10 ? '0' + s : s);
+  }
+
+  /* Fade rather than cut — a hard stop on a wedding site sounds like a fault */
+  function fadeTo(targetVol, done) {
+    clearInterval(fadeTimer);
+    var start = audio.volume;
+    var steps = Math.round(FADE_MS / 40);
+    var i = 0;
+    fadeTimer = setInterval(function () {
+      i++;
+      audio.volume = Math.min(1, Math.max(0, start + (targetVol - start) * (i / steps)));
+      if (i >= steps) {
+        clearInterval(fadeTimer);
+        if (done) done();
+      }
+    }, 40);
+  }
+
+  function paintState(playing) {
+    document.body.classList.toggle('is-playing', playing);
+    songSection.classList.toggle('is-spinning', playing);
+    [playBtn, jukeBtn].forEach(function (b) {
+      b.setAttribute('aria-pressed', String(playing));
+      b.setAttribute('aria-label', playing ? 'Pause our song' : 'Play our song');
+    });
+  }
+
+  function paintSeek() {
+    var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    if (!seeking) seek.value = Math.round(pct * 10);
+    seek.style.backgroundImage =
+      'linear-gradient(to right, var(--gold) 0%, var(--gold) ' + pct +
+      '%, var(--rule) ' + pct + '%, var(--rule) 100%)';
+    nowEl.textContent = clock(audio.currentTime);
+  }
+
+  function toggleSong() {
+    dismissHint();
+    if (audio.paused) {
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          /* the browser refused (rare, since this came from a click) */
+          noteEl.textContent = 'Your browser blocked playback — tap the button once more.';
+        });
+      }
+    } else {
+      fadeTo(0, function () { audio.pause(); });
+    }
+  }
+
+  playBtn.addEventListener('click', toggleSong);
+  jukeBtn.addEventListener('click', toggleSong);
+
+  audio.addEventListener('play', function () {
+    paintState(true);
+    fadeTo(VOLUME);
+  });
+
+  audio.addEventListener('pause', function () {
+    paintState(false);
+  });
+
+  /* While the file is still arriving the browser reports an estimated
+     duration and revises it, so listen for the correction as well as the
+     first reading — otherwise the total time shows wrong on a slow line. */
+  function paintDuration() {
+    totalEl.textContent = clock(audio.duration);
+    paintSeek();
+  }
+
+  audio.addEventListener('loadedmetadata', paintDuration);
+  audio.addEventListener('durationchange', paintDuration);
+
+  audio.addEventListener('timeupdate', paintSeek);
+
+  /* With <source> children the failure surfaces on the sources, not always on
+     the <audio>, so listen to both and only give up once none are left. */
+  function songUnavailable() {
+    [playBtn, jukeBtn].forEach(function (b) { b.disabled = true; });
+    noteEl.textContent = 'The song could not be loaded.';
+  }
+
+  audio.addEventListener('error', songUnavailable);
+
+  var sources = audio.querySelectorAll('source');
+  var deadSources = 0;
+  sources.forEach(function (s) {
+    s.addEventListener('error', function () {
+      deadSources++;
+      if (deadSources === sources.length) songUnavailable();
+    });
+  });
+
+  /* Scrubbing: follow the thumb live, and don't let timeupdate fight it */
+  seek.addEventListener('input', function () {
+    seeking = true;
+    if (audio.duration) {
+      nowEl.textContent = clock((seek.value / 1000) * audio.duration);
+    }
+  });
+
+  seek.addEventListener('change', function () {
+    if (audio.duration) audio.currentTime = (seek.value / 1000) * audio.duration;
+    seeking = false;
+    paintSeek();
+  });
+
+  /* The nudge: once per visit, and only after they've settled in */
+  function dismissHint() {
+    hint.classList.remove('is-shown');
+    try { sessionStorage.setItem('hintSeen', '1'); } catch (e) {}
+  }
+
+  document.getElementById('jukeboxDismiss').addEventListener('click', function (e) {
+    e.stopPropagation();
+    dismissHint();
+  });
+
+  var seen = false;
+  try { seen = sessionStorage.getItem('hintSeen') === '1'; } catch (e) {}
+
+  if (!seen) {
+    setTimeout(function () {
+      if (audio.paused) {
+        hint.classList.add('is-shown');
+        setTimeout(function () { hint.classList.remove('is-shown'); }, 7000);
+      }
+    }, 2500);
+  }
+
+  /* On a phone the floating button sits right where the RSVP submit is.
+     Tuck it away while the form is on screen — missing "Send our reply"
+     because a music button was in the way would be a genuinely bad trade. */
+  var jukebox = document.getElementById('jukebox');
+  var narrow = window.matchMedia('(max-width: 620px)');
+
+  if ('IntersectionObserver' in window) {
+    var rsvpSection = document.getElementById('rsvp');
+    var rsvpOnScreen = false;
+
+    function syncTuck() {
+      jukebox.classList.toggle('is-tucked', rsvpOnScreen && narrow.matches);
+    }
+
+    new IntersectionObserver(function (entries) {
+      rsvpOnScreen = entries[0].isIntersecting;
+      syncTuck();
+    }, { threshold: 0.12 }).observe(rsvpSection);
+
+    /* rotating the phone changes the answer, so re-check on resize too */
+    if (narrow.addEventListener) narrow.addEventListener('change', syncTuck);
+    else if (narrow.addListener) narrow.addListener(syncTuck);
+  }
+
+  paintSeek();
 
   /* Gift links are placeholders in the demo */
   document.querySelectorAll('[data-demo-link]').forEach(function (el) {
