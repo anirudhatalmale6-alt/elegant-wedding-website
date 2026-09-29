@@ -112,9 +112,13 @@ scripts and cookies.
 
 - Static HTML, CSS and vanilla JavaScript. No build step, no framework, no
   dependencies, nothing to keep updated.
-- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`, so the page
-  makes **no external network requests at all** — nothing is loaded from Google,
-  no analytics, no trackers, and no guest data leaves the page.
+- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`. There is no
+  analytics and no tracking of our own, and **no guest data leaves the page** —
+  the RSVP never touches a third party.
+- **One exception, and only one:** the Spotify embed in the Our Song section
+  loads Spotify's script and sets Spotify's cookies for anyone who scrolls to
+  it. Removing that one `<iframe>` restores the property that the page makes no
+  external requests whatsoever.
 - Responsive from 320px up; verified with no horizontal overflow at 390px and
   1280px.
 - Accessibility: semantic landmarks, labelled form controls, `aria-invalid` on
