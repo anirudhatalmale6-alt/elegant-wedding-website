@@ -115,11 +115,15 @@ endpoint is actually configured.
 
 - Static HTML, CSS and vanilla JavaScript. No build step, no framework, no
   dependencies, nothing to keep updated.
-- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`, so the page
-  makes **no external network requests at all**: no Google, no analytics, no
-  trackers, and no guest data leaves the page. The Spotify embed was the one
-  exception to this and it has now been removed along with the rest of the
-  music, so the property holds again in full.
+- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`, so **loading
+  the page makes no external requests at all**: no Google, no analytics, no
+  trackers, nothing that records a visit. The Spotify embed was the one
+  exception and it went with the music.
+- The one deliberate outbound request is the RSVP itself, once `data-endpoint`
+  is set: submitting sends the reply to the couple's own Google Sheet. That is
+  the guest knowingly sending their answer where it was asked for, not
+  tracking, and it happens only on submit. Browsing the site still reveals
+  nothing to anyone.
 - Responsive from 320px up; verified with no horizontal overflow at 390px and
   1280px.
 - Accessibility: semantic landmarks, labelled form controls, `aria-invalid` on
