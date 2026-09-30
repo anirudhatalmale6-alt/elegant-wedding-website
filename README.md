@@ -17,6 +17,17 @@ changes from them. Two things worth flagging:
 The RSVP-by date is 30 November 2026, confirmed by the couple. Their Canva site
 said 30 August 2026, which had already passed when this was built.
 
+## No music
+
+There was a music section: a Spotify embed of the track the couple chose, plus
+an original piano piece playing quietly in the background. They could not
+obtain a licensed copy of the track they wanted, so on 30 September they asked
+for the music to be removed altogether. The player, the embed, the floating
+control, the audio files and all their CSS and JavaScript are gone.
+
+`make_music.py` and `make_music2.py` (outside this repo) still generate the two
+original pieces if it is ever wanted back.
+
 ## House style
 
 The couple asked for **no en or em dashes anywhere in the copy** — they felt the
@@ -45,10 +56,9 @@ gulls that drift. No photograph, no licensing, no download.
 | Hero | Names, date, place, live countdown, RSVP call to action, coastline illustration |
 | Ceremony band | A dark full-width band stating plainly that the ceremony is for them, the boys and immediate family, and that the reception is for everyone |
 | Our Wedding | Why Anglesea, in the couple's own words, with their beach photograph |
-| Photo band | Full-width pier photograph between Details and Music |
+| Photo band | Full-width pier photograph between Details and the RSVP |
 | Schedule | Five cards laid out 3 + 2 and centred; the 11am ceremony card is set apart and tagged "Not a guest event" |
 | Details | Venue, dress code, where to stay, getting home |
-| Music | The Spotify embed of their track, and a separate background player with a turning record, seek bar and a floating control that follows the guest |
 | RSVP | Full form with validation, conditional fields, and a confirmation state |
 | Gifts | Wishing well at the venue, and what contributions go towards |
 | FAQs | Nine expandable questions, the first answering "can we come to the ceremony?" |
@@ -77,68 +87,15 @@ posts to a small backend instead — that's the one-line change marked
 and emails the couple. A password-protected page listing every reply, with a
 CSV export for the caterer, is the usual companion to that.
 
-## The music
-
-Two separate things, deliberately kept apart:
-
-**Their song** — *Daylight (Piano Version)* by Relaxing Piano Covers — plays
-through a Spotify embed in the Music section. This is the only element on
-the site that reaches a third party: the embed loads Spotify's script and sets
-Spotify's cookies. Everything else is served from this site. Spotify plays the
-full track for signed-in listeners and a ~30 second preview for everyone else,
-and it cannot autoplay or play in the background.
-
-**The background music** is `audio/our-song.mp3` (plus a smaller `.ogg`), an
-original piano piece written for this build: nothing sampled, nothing
-licensed, nothing to clear. It is a slow 4/4 ballad in G major, chosen to sit
-near the mood of the track they picked. `make_music2.py` generates it; the
-earlier 3/4 waltz is `make_music.py` if they prefer that one.
-
-The couple asked whether the track could be pulled from a YouTube link. It
-could not: the video is a third-party upload of commercial music, so taking the
-audio would breach both YouTube's terms and the rights in the recording. The
-Spotify embed is the legitimate way to have that exact track on the page, and
-original music is the legitimate way to have something playing in the
-background.
-
-How it behaves:
-
-- **It never autoplays.** Browsers block sound-on-load, and it is also just
-  rude, so playback only ever starts from a real click. A small nudge appears
-  by the button a couple of seconds in, once per visit, and can be dismissed.
-- Two controls — the inline player and the floating button — drive one `<audio>`
-  element and always show the same state.
-- Volume fades in and out over ~0.7s rather than cutting, which otherwise sounds
-  like a fault.
-- `preload="none"`: the file is not downloaded at all unless a guest asks for
-  it, so nobody on mobile data pays for music they never played.
-- The seek bar scrubs and the track loops.
-- On phones the floating button tucks itself away while the RSVP form is on
-  screen, so it can never sit over the submit button.
-- If the audio file is missing or unplayable, both controls disable themselves
-  and say so rather than sitting there dead.
-
-To swap in a different song, drop your file in `audio/` and update the two
-`<source>` elements plus the title and artist in `index.html`. Keep both an mp3
-and an ogg if you want the widest coverage; mp3 alone is fine in practice.
-
-Note on rights: hosting a commercial recording on a public page needs a licence,
-which is why the background music here is original. An embed
-(Spotify/Apple Music/YouTube) is the licensed route to a commercial track, but
-it costs you the "no external requests" property described below, since it loads
-third-party scripts and cookies.
-
 ## Technical notes
 
 - Static HTML, CSS and vanilla JavaScript. No build step, no framework, no
   dependencies, nothing to keep updated.
-- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`. There is no
-  analytics and no tracking of our own, and **no guest data leaves the page** —
-  the RSVP never touches a third party.
-- **One exception, and only one:** the Spotify embed in the Music section
-  loads Spotify's script and sets Spotify's cookies for anyone who scrolls to
-  it. Removing that one `<iframe>` restores the property that the page makes no
-  external requests whatsoever.
+- Fonts (Cormorant Garamond and Lora) are self-hosted in `fonts/`, so the page
+  makes **no external network requests at all**: no Google, no analytics, no
+  trackers, and no guest data leaves the page. The Spotify embed was the one
+  exception to this and it has now been removed along with the rest of the
+  music, so the property holds again in full.
 - Responsive from 320px up; verified with no horizontal overflow at 390px and
   1280px.
 - Accessibility: semantic landmarks, labelled form controls, `aria-invalid` on
@@ -162,10 +119,9 @@ Then open <http://localhost:8000>.
 ```
 index.html    all page content
 styles.css    the whole design — colours are CSS variables at the top
-script.js     countdown, navigation, scroll reveals, RSVP logic, music player
+script.js     countdown, navigation, scroll reveals, RSVP logic
 fonts.css     self-hosted @font-face declarations
 fonts/        woff2 files (latin subset)
-audio/        the background music, as mp3 and ogg
 img/          the couple's photographs, resized for the web
 ```
 
