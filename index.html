@@ -337,7 +337,9 @@
 
     <div class="rsvp-shell reveal">
 
-      <form id="rsvpForm" novalidate>
+      <!-- data-endpoint: paste the Google Apps Script web app URL here to
+           start collecting replies. Empty means replies go nowhere. -->
+      <form id="rsvpForm" novalidate data-endpoint="">
 
         <div class="grid-2">
           <div class="field">
@@ -425,6 +427,11 @@
           <label for="message">A message for us (optional)</label>
           <textarea id="message" name="message"></textarea>
         </div>
+
+        <p class="field__error rsvp__senderror" id="rsvpSendError">
+          Sorry, that did not go through. Please check your connection and try
+          again, or message Danielle or Jordan directly.
+        </p>
 
         <div class="rsvp__submit">
           <button type="submit" class="btn btn--solid" id="rsvpSubmit">Send our reply</button>

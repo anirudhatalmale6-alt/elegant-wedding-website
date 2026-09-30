@@ -71,8 +71,14 @@
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---------- RSVP ---------- */
+  /* ---------- RSVP ----------------------------------------------
+     Where replies are sent lives on the form's data-endpoint attribute in
+     index.html, so it can be changed without touching this file. Empty
+     means the draft behaviour: the reply stays in the guest's own browser
+     and reaches nobody. */
   var form = document.getElementById('rsvpForm');
+  var submitBtn = document.getElementById('rsvpSubmit');
+  var sendError = document.getElementById('rsvpSendError');
   var confirmPanel = document.getElementById('rsvpConfirm');
   var confirmTitle = document.getElementById('confirmTitle');
   var confirmBody = document.getElementById('confirmBody');
@@ -161,32 +167,69 @@
       return;
     }
 
+    var RSVP_ENDPOINT = (form.getAttribute('data-endpoint') || '').trim();
+
     var data = {};
     new FormData(form).forEach(function (value, key) { data[key] = value; });
     data.submittedAt = new Date().toISOString();
 
-    /* Demo storage. Live build: fetch('/api/rsvp', {method:'POST', ...}) */
-    try {
-      var all = JSON.parse(localStorage.getItem('rsvps') || '[]');
-      all.push(data);
-      localStorage.setItem('rsvps', JSON.stringify(all));
-    } catch (err) {
-      /* private browsing — the demo still confirms */
+    function showConfirmation() {
+      var coming = data.attending === 'yes';
+      confirmTitle.textContent = coming ? 'Wonderful, see you there' : 'Thank you for letting us know';
+      confirmBody.textContent = coming
+        ? 'Your reply is in, ' + data.firstName + '. We\'ve got you down for ' +
+          (Number(data.guests) > 1 ? 'two places' : 'one place') +
+          (RSVP_ENDPOINT ? '. A confirmation is on its way to ' + data.email : '') +
+          ', and we\'ll send the final details closer to the date.'
+        : 'We\'re sorry you can\'t make it, ' + data.firstName +
+          ', but thank you for replying. It really does help with the planning, and we\'ll raise a glass to you.';
+
+      form.classList.add('is-hidden');
+      confirmPanel.classList.remove('is-hidden');
+      confirmPanel.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
 
-    var coming = data.attending === 'yes';
-    confirmTitle.textContent = coming ? 'Wonderful, see you there' : 'Thank you for letting us know';
-    confirmBody.textContent = coming
-      ? 'Your reply is in, ' + data.firstName + '. We\'ve got you down for ' +
-        (Number(data.guests) > 1 ? 'two places' : 'one place') +
-        '. A confirmation is on its way to ' + data.email +
-        ', and we\'ll send the final details closer to the date.'
-      : 'We\'re sorry you can\'t make it, ' + data.firstName +
-        ', but thank you for replying. It really does help with the planning, and we\'ll raise a glass to you.';
+    /* No endpoint configured yet, so keep a local copy and confirm. This is
+       the draft behaviour only: nothing reaches the couple in this state. */
+    if (!RSVP_ENDPOINT) {
+      try {
+        var all = JSON.parse(localStorage.getItem('rsvps') || '[]');
+        all.push(data);
+        localStorage.setItem('rsvps', JSON.stringify(all));
+      } catch (err) {
+        /* private browsing, the draft still confirms */
+      }
+      showConfirmation();
+      return;
+    }
 
-    form.classList.add('is-hidden');
-    confirmPanel.classList.remove('is-hidden');
-    confirmPanel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    /* Sending for real. Never show the thank-you until the reply has
+       actually landed, or a guest walks away believing they replied. */
+    submitBtn.disabled = true;
+    var originalLabel = submitBtn.textContent;
+    submitBtn.textContent = 'Sending…';
+    sendError.classList.remove('is-shown');
+
+    /* text/plain keeps this a "simple" request, so the browser skips the
+       CORS preflight that a Google Apps Script endpoint cannot answer. */
+    fetch(RSVP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function () {
+        showConfirmation();
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+        sendError.classList.add('is-shown');
+        sendError.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      });
   });
 
   document.getElementById('rsvpAgain').addEventListener('click', function () {

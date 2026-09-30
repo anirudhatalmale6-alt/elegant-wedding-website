@@ -932,3 +932,10 @@ img { max-width: 100%; display: block; }
 @media (max-width: 560px) {
   .schedule .card { flex-basis: 100%; max-width: none; }
 }
+
+/* Shown only when a reply fails to send, so nobody walks away believing
+   they have replied when they have not. */
+.rsvp__senderror {
+  text-align: center;
+  margin-top: 1.5rem;
+}

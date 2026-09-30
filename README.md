@@ -80,12 +80,36 @@ gulls that drift. No photograph, no licensing, no download.
 - On success the form is replaced by a confirmation that differs for accepts and
   declines.
 
-In this demo the submission is saved to the browser's `localStorage` so the flow
-can be clicked through end to end. In a live build the same `submit` handler
-posts to a small backend instead — that's the one-line change marked
-`Live build:` in `script.js` — which writes the reply to a guest-list database
-and emails the couple. A password-protected page listing every reply, with a
-CSV export for the caterer, is the usual companion to that.
+## Collecting the replies
+
+**Out of the box the form sends nowhere.** With `data-endpoint` empty on the
+`<form>` in `index.html`, a reply is written to the guest's own `localStorage`
+and nobody else ever sees it. That is fine for a draft and fatal if the link
+gets shared, so it is the first thing to wire up before launch.
+
+`rsvp-google-sheet.gs` (outside this repo) is a Google Apps Script the couple
+paste into a spreadsheet in their own Google account. Deploy it as a web app,
+put the resulting URL in `data-endpoint`, and every reply:
+
+- appends a row to their private "Wedding RSVPs" sheet, which they can sort,
+  filter and export as CSV for the caterer;
+- emails both of them a summary of who replied and what they said;
+- emails the guest a confirmation with the date, venue and the 4:30pm arrival.
+
+It runs under their Google account, so they own the data and it keeps working
+independently of anyone else. A `LockService` lock stops two simultaneous
+replies from colliding on the same row.
+
+The POST deliberately uses `Content-Type: text/plain`. That keeps it a "simple"
+CORS request, so the browser skips the preflight `OPTIONS` that an Apps Script
+web app cannot answer.
+
+**Failure is handled honestly.** If the send fails for any reason, the guest
+does not get a thank-you. They get an error asking them to try again, and the
+submit button re-enables. `test_rsvp_send.py` covers all four paths: no
+endpoint, a working endpoint, an endpoint returning 500, and the connection
+dropping. The thank-you also only promises a confirmation email when an
+endpoint is actually configured.
 
 ## Technical notes
 
