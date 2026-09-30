@@ -757,17 +757,6 @@ img { max-width: 100%; display: block; }
 
 .footer .divider { color: rgba(134,174,180,.6); }
 
-/* Demo ribbon --------------------------------------------------- */
-.demo-bar {
-  background: var(--gold);
-  color: #fff;
-  text-align: center;
-  font-size: clamp(0.58rem, 1.9vw, 0.68rem);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 0.5rem var(--gutter);
-}
-
 /* Reveal on scroll ---------------------------------------------- */
 .reveal {
   opacity: 0;
