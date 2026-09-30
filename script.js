@@ -77,6 +77,7 @@
      means the draft behaviour: the reply stays in the guest's own browser
      and reaches nobody. */
   var form = document.getElementById('rsvpForm');
+  var formReadyAt = Date.now();
   var submitBtn = document.getElementById('rsvpSubmit');
   var sendError = document.getElementById('rsvpSendError');
   var confirmPanel = document.getElementById('rsvpConfirm');
@@ -172,6 +173,12 @@
     var data = {};
     new FormData(form).forEach(function (value, key) { data[key] = value; });
     data.submittedAt = new Date().toISOString();
+
+    /* How long the form was on screen before it was sent. A person takes far
+       longer than this to fill it in; a bot posts almost instantly. Sent to
+       the server rather than judged here, so a real guest is never silently
+       dropped by my own guess. */
+    data.elapsedMs = Date.now() - formReadyAt;
 
     function showConfirmation() {
       var coming = data.attending === 'yes';

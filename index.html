@@ -428,6 +428,17 @@
           <textarea id="message" name="message"></textarea>
         </div>
 
+        <!-- Spam trap. Off-screen rather than display:none, so a naive bot
+             still finds it and fills it in, while nobody real ever sees it.
+             The name is deliberately meaningless so password managers have
+             nothing to recognise and autofill. A reply that trips this is
+             still sent and still recorded, just into a separate tab, so a
+             human who somehow trips it is never silently lost. -->
+        <div class="hp" aria-hidden="true">
+          <label for="rsvpNote2">Leave this field empty</label>
+          <input type="text" id="rsvpNote2" name="rsvpNote2" tabindex="-1" autocomplete="off">
+        </div>
+
         <p class="field__error rsvp__senderror" id="rsvpSendError">
           Sorry, that did not go through. Please check your connection and try
           again, or message Danielle or Jordan directly.

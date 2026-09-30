@@ -104,6 +104,22 @@ The POST deliberately uses `Content-Type: text/plain`. That keeps it a "simple"
 CORS request, so the browser skips the preflight `OPTIONS` that an Apps Script
 web app cannot answer.
 
+**Spam trap.** The form carries a hidden field (`rsvpNote2`), parked off
+screen rather than `display:none` so a naive bot still finds and fills it, out
+of the tab order and `aria-hidden` so no real person or screen reader ever
+meets it. The payload also carries `elapsedMs`, how long the form was on screen
+before it was sent.
+
+Both signals are judged **server side, not in the browser**, and a suspect
+reply is written to a "Blocked" tab rather than discarded. Nothing is ever
+thrown away, so a real guest who somehow trips the trap can still be found and
+rescued. The endpoint returns success either way, so a bot does not learn to
+retry. `test_honeypot.py` covers a real guest, a bot, and the field's own
+hiding.
+
+Worth glancing at the Blocked tab occasionally. A trap that never fires is
+doing nothing, and a trap with real names in it is doing harm.
+
 **Failure is handled honestly.** If the send fails for any reason, the guest
 does not get a thank-you. They get an error asking them to try again, and the
 submit button re-enables. `test_rsvp_send.py` covers all four paths: no
